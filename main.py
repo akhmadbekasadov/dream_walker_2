@@ -9,20 +9,31 @@ from scores import Scores
 def run():
 
     pygame.init()
-    screen = pygame.display.set_mode((800, 600))
+
+    background_image = pygame.image.load('image/test/roads.png')
+    screen = pygame.display.set_mode(background_image.get_size())
     pygame.display.set_caption("Dream Walker")
-    background_image = pygame.image.load('image/roads2.png')
+
     person = Person(screen)
     pillows = Group()
-    controls.create_army(screen, pillows)
+    controls.create_army(screen, pillows, screen_size=background_image.get_size())
     stats = Stats()
     sc = Scores(screen, stats)
 
+    tmp = 0 #position
+    velocity = 2
+
+
+
     while True:
-        controls.events(screen, person)
+        controls.events(screen, person, screen_size=background_image.get_size())
         if stats.run_game:
             person.update_person()
             controls.update(background_image, screen, stats, sc, person, pillows)
-            controls.update_pillows(stats, screen, person, pillows)
+            controls.update_pillows(stats, screen, sc, person, pillows, velocity)
+
+            tmp += velocity
+            if tmp % 500 == 0:
+                controls.create_army(screen, pillows, screen_size=background_image.get_size())
 
 run()

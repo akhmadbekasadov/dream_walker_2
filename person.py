@@ -8,7 +8,7 @@ class Person(Sprite):
         """initialization person"""
         super(Person, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('image/person3.png')
+        self.image = pygame.image.load('image/test/person.png')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx

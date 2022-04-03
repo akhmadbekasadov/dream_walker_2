@@ -6,6 +6,7 @@ class Stats():
 
         self.reset_stats()
         self.run_game = True
+
         with open('high_score.txt', 'r') as f:
             self.high_score = int(f.readline())
 
