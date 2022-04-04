@@ -12,7 +12,7 @@ def events(screen, person, screen_size):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        #turn to the right and to the left
+        # turn to the right and to the left
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d and person.rect.centerx + step < screen_size[0]:
                 person.rect.centerx = 2.5*step
@@ -20,7 +20,7 @@ def events(screen, person, screen_size):
                 person.rect.centerx = 0.5*step
             elif event.key == pygame.K_s:
                 person.rect.centerx = 1.5*step
-        #key unpressed
+        # key unpressed
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
                 person.moveright = False
@@ -34,6 +34,7 @@ def update(background_image, screen, stats, sc, person, pillows):
     """update screen"""
 
     screen.blit(background_image, (0, 0))
+    check_high_score(sc)
     sc.show_score()
     person.output()
     pillows.draw(screen)
@@ -77,11 +78,12 @@ def person_kill(stats, screen, sc, person, pillows):
         stats.run_game = False
         sys.exit()
 
-def check_high_score(stats, sc):
+
+def check_high_score(score):
     """check new records"""
 
-    if stats.score > stats.high_score:
-        stats.high_score = stats.score
-        sc.img_high_score()
+    if score.stats.score > score.stats.high_score:
+        score.stats.high_score = score.stats.score
+        score.image_high_score()
         with open('high_score.txt', 'w') as f:
-            f.write(str(stats.high_score))
+            f.write(str(score.stats.high_score))

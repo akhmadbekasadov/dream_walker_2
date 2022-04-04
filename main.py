@@ -20,10 +20,8 @@ def run():
     stats = Stats()
     sc = Scores(screen, stats)
 
-    tmp = 0 #position
+    tmp = 0  # position
     velocity = 2
-
-
 
     while True:
         controls.events(screen, person, screen_size=background_image.get_size())
@@ -35,5 +33,6 @@ def run():
             tmp += velocity
             if tmp % 500 == 0:
                 controls.create_army(screen, pillows, screen_size=background_image.get_size())
+
 
 run()
