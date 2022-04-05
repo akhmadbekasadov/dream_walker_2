@@ -15,11 +15,11 @@ def run():
 
     person = Person(screen)
     pillows = Group()
-    controls.create_army(screen, pillows, screen_size=background_image.get_size())
+    # получаем самый первый сет подушек
+    sub_pills = controls.create_army(screen, pillows, screen_size=background_image.get_size())
     stats = Stats()
     sc = Scores(screen, stats)
 
-    tmp = 0  # position
     velocity = 0.25
 
     while True:
@@ -34,9 +34,11 @@ def run():
             elif stats.score >= 400:
                 velocity = 0.75
 
-            tmp += velocity
-            if tmp % 500 == 0:
-                controls.create_army(screen, pillows, screen_size=background_image.get_size())
+            print([x.y for x in sub_pills.sprites()])  # принты пока оставь, чтобы было понимание
+            # здесь следует настроить, когда именно вводить обновление сета подушек
+            if sub_pills.sprites()[0].y > 600:  # если любая из сета подушек спустилась достаточно низко
+                # то пора обновить сет подушек
+                sub_pills = controls.create_army(screen, pillows, screen_size=background_image.get_size())
 
 
 run()

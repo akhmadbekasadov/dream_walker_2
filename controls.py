@@ -44,6 +44,7 @@ def update(background_image, screen, stats, sc, person, pillows):
 def create_army(screen, pillows, screen_size):
     """create army pillows"""
 
+    pillows.empty()  # очищаем старый сет подушек
     position = screen_size[0] / 6
     step = screen_size[0] / 3
     number_pillow_x = 2
@@ -52,6 +53,8 @@ def create_army(screen, pillows, screen_size):
         pillow = Pillow(screen)
         pillow.rect.centerx = position + step*random.randint(0, 2)
         pillows.add(pillow)
+
+    return pillows  # возвращаем обновленный сет подушек
 
 
 def update_pillows(stats, screen, sc, person, pillows, velocity):
