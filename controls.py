@@ -48,7 +48,7 @@ def create_army(screen, pillows, screen_size):
     step = screen_size[0] / 3
     number_pillow_x = 2
 
-    for pillow_number in range(number_pillow_x):
+    for pillow_number in range(1, number_pillow_x + 1):
         pillow = Pillow(screen)
         pillow.rect.centerx = position + step*random.randint(0, 2)
         pillows.add(pillow)

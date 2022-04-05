@@ -11,7 +11,7 @@ class Pillow(pygame.sprite.Sprite):
 
         super(Pillow, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('image/test/pillow.png')
+        self.image = pygame.image.load('image/test/pillow2.png')
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = -self.rect.height

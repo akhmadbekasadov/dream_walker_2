@@ -7,10 +7,9 @@ from scores import Scores
 
 
 def run():
-
     pygame.init()
 
-    background_image = pygame.image.load('image/test/roads.png')
+    background_image = pygame.image.load('image/test/roads3.png')
     screen = pygame.display.set_mode(background_image.get_size())
     pygame.display.set_caption("Dream Walker")
 
@@ -21,7 +20,7 @@ def run():
     sc = Scores(screen, stats)
 
     tmp = 0  # position
-    velocity = 2
+    velocity = 0.25
 
     while True:
         controls.events(screen, person, screen_size=background_image.get_size())
@@ -29,6 +28,11 @@ def run():
             person.update_person()
             controls.update(background_image, screen, stats, sc, person, pillows)
             controls.update_pillows(stats, screen, sc, person, pillows, velocity)
+
+            if 200 <= stats.score < 400:
+                velocity = 0.5
+            elif stats.score >= 400:
+                velocity = 0.75
 
             tmp += velocity
             if tmp % 500 == 0:
