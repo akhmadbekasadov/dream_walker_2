@@ -1,6 +1,7 @@
 import random
 import pygame
 import sys
+import windows
 from pillow import Pillow
 import time
 
@@ -44,7 +45,7 @@ def update(background_image, screen, stats, sc, person, pillows):
 def create_army(screen, pillows, screen_size):
     """create army pillows"""
 
-    pillows.empty()  # очищаем старый сет подушек
+    pillows.empty()  # clean the old cushion set
     position = screen_size[0] / 6
     step = screen_size[0] / 3
     number_pillow_x = 2
@@ -54,7 +55,7 @@ def create_army(screen, pillows, screen_size):
         pillow.rect.centerx = position + step*random.randint(0, 2)
         pillows.add(pillow)
 
-    return pillows  # возвращаем обновленный сет подушек
+    return pillows  # bringing back an updated cushion set
 
 
 def update_pillows(stats, screen, sc, person, pillows, velocity):
@@ -79,7 +80,7 @@ def person_kill(stats, screen, sc, person, pillows):
         time.sleep(1)
     else:
         stats.run_game = False
-        sys.exit()
+        windows.gameover(stats.score, stats.high_score)
 
 
 def check_high_score(score):

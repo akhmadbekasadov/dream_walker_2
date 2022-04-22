@@ -34,14 +34,14 @@ class Scores:
         """
         Text score to graphic image
         """
-        self.score_img = self.font.render(str(self.stats.score), True, self.text_color, (0, 255, 0))
+        self.score_img = self.font.render(str(self.stats.score), True, (51, 255, 51))
         self.score_rect = self.score_img.get_rect()
         self.score_rect.centerx = self.screen_rect.centerx
 
     def image_high_score(self):
         """text record score to graphic image"""
 
-        self.high_score_img = self.font.render(str(self.stats.high_score), True, self.text_color, (100, 100, 100))
+        self.high_score_img = self.font.render(str(self.stats.high_score), True, self.text_color)
         self.high_score_rect = self.high_score_img.get_rect()
         self.high_score_rect.left = self.screen_rect.left
         self.high_score_rect.top = 20
@@ -49,7 +49,7 @@ class Scores:
     def image_lifes(self):
         """number of lifes"""
 
-        self.lifes_img = self.font.render(str(self.stats.persons_life), True, self.text_color, (0, 0, 255))
+        self.lifes_img = self.font.render(str(self.stats.persons_life), True, (255, 255, 255))
         self.lifes_rect = self.lifes_img.get_rect()
         self.lifes_rect.right = self.screen_rect.right
         self.lifes_rect.top = 20
