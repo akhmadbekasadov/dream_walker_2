@@ -5,7 +5,6 @@ from pygame.sprite import Group
 from stats import Stats
 from scores import Scores
 import windows
-import datetime
 
 
 def run():
@@ -22,7 +21,7 @@ def run():
     stats = Stats()
     sc = Scores(screen, stats)
 
-    velocity = 0.1
+    velocity = 1
     windows.start(sc)
 
     try:
@@ -34,17 +33,19 @@ def run():
                 controls.update_pillows(stats, screen, sc, person, pillows, velocity)
 
                 if 300 <= stats.score < 600:
-                    velocity = 0.2
+                    velocity = 2
                 elif 600 <= stats.score < 900:
-                    velocity = 0.3
+                    velocity = 3
                 elif 900 <= stats.score < 1200:
-                    velocity = 0.4
+                    velocity = 4
                 elif 1200 <= stats.score < 1500:
-                    velocity = 0.5
+                    velocity = 5
                 elif 1500 <= stats.score < 2000:
-                    velocity = 0.6
-                elif stats.score >= 2000:
-                    velocity = 0.7
+                    velocity = 6
+                elif 2000 <= stats.score < 3000:
+                    velocity = 7
+                elif stats.score >= 3000:
+                    velocity = 8
 
                 # print([x.y for x in sub_pills.sprites()])  # leave the prints for now so that there is an understanding
                 # here should be configured exactly when to enter the cushion set update
@@ -86,8 +87,4 @@ def gameover(resultat, high_resultat):
             pygame.quit()
             quit()
 
-
 run()
-
-
-"start counting after press letsgo"
