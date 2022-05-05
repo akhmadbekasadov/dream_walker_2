@@ -1,6 +1,4 @@
 import pygame
-import controls
-from pygame.sprite import Group
 
 
 class Pillow(pygame.sprite.Sprite):

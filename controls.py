@@ -1,7 +1,6 @@
 import random
 import pygame
 import sys
-import windows
 from pillow import Pillow
 import time
 
@@ -77,10 +76,15 @@ def person_kill(stats, screen, sc, person, pillows):
         pillows.empty()
         create_army(screen, pillows, screen.get_size())
         person.create_person()
-        time.sleep(1)
+        for i, y, z in zip(range(3, 0, -1), [200, 300, 400], [50, 75, 100]):
+            label = pygame.font.SysFont("", z).render(f"{i}...", 1, (255, 255, 255))
+            screen.blit(label, (300, y))
+            pygame.display.update()
+            time.sleep(1)
+        # 3 2 1 paint
     else:
         stats.run_game = False
-        windows.gameover(stats.score, stats.high_score)
+        raise AssertionError
 
 
 def check_high_score(score):
